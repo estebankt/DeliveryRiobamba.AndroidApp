@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Login</string>
+    <string name="username_or_mail">Correo Electronico</string>
+    <string name="password">Password</string>
+    <string name="login">Ingresar</string>
+    <string name="register">Registrarse</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_register">Datos de Registracion</string>
+    <string name="direccion_de_entrega">Direccion de Entrega</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="direccion_de_la_factura">Direccion de Factura</string>
+    <string name="telefono">Telefono</string>
+    <string name="correo_electronico">Correo Electronico</string>
+    <string name="nombre_y_apellido">Nombre y Apellido</string>
+    <string name="direccion">Direccion</string>
+    <string name="register_name">Registrarse</string>
+</resources>
