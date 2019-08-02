@@ -18,6 +18,7 @@ public class CheckUsers  {
             try {
                 JSONObject jsonObj = new JSONObject(JSON_STRING);
                 // cramos un JSON array
+                // Pato chupa bolas
                 JSONArray contacts = jsonObj.getJSONArray("contacts");
 
                 // looping through All Contacts
