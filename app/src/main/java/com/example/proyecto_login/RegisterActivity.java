@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             CheckUsers ch = new CheckUsers();
             // El metodo check me devuelve un string con los posibles resultados:accept(Login Valido),no_accepted(Login invalido)
             // invalid_pass(password invalido), error (Error por JSON)
-            //importnt
+            //chumeo eres un puto 
             checker = ch.check(JSON_STRING,Mail,Password);
 
 
