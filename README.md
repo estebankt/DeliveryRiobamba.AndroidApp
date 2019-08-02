@@ -1,1 +1,0 @@
-# DeliveryRiobamba.AndroidApp
