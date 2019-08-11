@@ -14,4 +14,6 @@
     <string name="nombre_y_apellido">Nombre y Apellido</string>
     <string name="direccion">Direccion</string>
     <string name="register_name">Registrarse</string>
+    <string name="facebook_app_id">2844922982191209</string> <string name="fb_login_protocol_scheme">fb2844922982191209</string>
+
 </resources>
