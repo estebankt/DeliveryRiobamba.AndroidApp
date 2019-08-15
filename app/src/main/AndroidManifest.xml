@@ -8,8 +8,9 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="RiobambaDelivery"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:background="@color/colorPrimaryDark"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".RestaurantProducts"></activity>
@@ -49,11 +50,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MenuActivity"
+            android:name=".MainActivity"
             android:label="@string/title_activity_menu"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+
+        <activity
+            android:name=".LogInActivity"
+            android:label="@string/title_activity_menu"
+            android:parentActivityName=".LogInActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

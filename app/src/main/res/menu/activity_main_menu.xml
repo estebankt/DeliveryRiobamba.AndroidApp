@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/ic_account_box_black_24dp"
+            android:clickable="true"
+            android:title="@string/Account" />
+        <item
+            android:id="@+id/nav_restlist"
+            android:icon="@drawable/ic_home_image"
+            android:title="@string/List_Restaurants" />
+        <item
+            android:id="@+id/nav_categories"
+            android:icon="@drawable/ic_list"
+            android:title="@string/Categories" />
+
+        <item
+            android:id="@+id/close_session"
+            android:icon="@drawable/ic_exit"
+            android:title="@string/menu_send" />
+    </group>
+
+    <item android:title="Comunicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/menu_share" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_about"
+                android:title="@string/About" />
+
+        </menu>
+    </item>
+
+</menu>
