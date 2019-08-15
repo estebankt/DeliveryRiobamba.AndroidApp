@@ -22,11 +22,11 @@
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".MenuActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.proyecto_login.MainActivity" />
+                android:value="com.example.proyecto_login.MenuActivity" />
         </activity>
 
         <meta-data
@@ -49,13 +49,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_menu"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
+       <activity
             android:name=".LogInActivity"
             android:label="@string/title_activity_menu"
             android:parentActivityName=".LogInActivity"

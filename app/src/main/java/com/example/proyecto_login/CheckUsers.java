@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class CheckUsers  {
     private String userdb,passdb;
     private String result="no_accepted";
-    private String TAG = MainActivity.class.getSimpleName();
+    private String TAG = LogInActivity.class.getSimpleName();
 
     public String check(String JSON_STRING, String userN, String Passw){
 

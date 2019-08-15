@@ -21,7 +21,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText DeliveryAddET;
     private EditText InvoiceAddET;
     private EditText PhoneET;
-    private String TAG = MainActivity.class.getSimpleName();
+    private String TAG = LogInActivity.class.getSimpleName();
     private Button RegisterButt;
 
 

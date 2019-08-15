@@ -147,7 +147,7 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
                     RequestOptions requestOptions = new RequestOptions();
                     requestOptions.dontAnimate();
 
-                   // Glide.with(MainActivity.this).load(image_url).into(circleimageview);
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
