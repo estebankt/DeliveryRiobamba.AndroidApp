@@ -10,13 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import com.bumptech.glide.request.RequestOptions;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -27,13 +21,9 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.google.android.material.navigation.NavigationView;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.Arrays;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class LogInActivity extends OptionMenuActivity implements View.OnClickListener{
@@ -46,7 +36,7 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
     private LoginButton loginButton;
     private CircleImageView circleimageview;
     private TextView txtName,txtEmail;
-    private Toolbar toolbar;
+
 
     private CallbackManager callbackManager;
 
@@ -64,15 +54,9 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
 
         loginButt.setOnClickListener(this);
         RegisterButt.setOnClickListener(this);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        //ejecutamos el metodo CreateMenu de la clase OptionMenuActivity, para crear el menu principal
+        //Est tiene que hacerse para todas las clases que tengan el menu
+        CreateMenu();
 
 
         //agregado por pato-------------------------------------------------------------------------

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,15 +12,19 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 
 public class OptionMenuActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
 
-        @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+
+
+    public void CreateMenu() {
+
+
+            //setContentView(R.layout.activity_menu);
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -43,7 +48,7 @@ public class OptionMenuActivity extends AppCompatActivity  implements Navigation
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        // getMenuInflater().inflate(R.menu.main, menu);
+         getMenuInflater().inflate(R.menu.top_menu, menu);
         return true;
     }
 
@@ -54,6 +59,11 @@ public class OptionMenuActivity extends AppCompatActivity  implements Navigation
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        if (id == R.id.action_drawer_cart) {
+
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -61,6 +71,7 @@ public class OptionMenuActivity extends AppCompatActivity  implements Navigation
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+
 
         int id = item.getItemId();
 

@@ -1,17 +1,12 @@
 package com.example.proyecto_login;
-
-import android.content.Intent;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.google.android.material.internal.NavigationMenuView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,76 +16,83 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import androidx.core.view.GravityCompat;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import android.view.MenuItem;
-
-import android.view.Menu;
-import com.google.android.material.navigation.NavigationView;
 
 
-
-public class MenuActivity extends OptionMenuActivity {
+public class MenuActivity extends OptionMenuActivity  {
 
     private RetrofitAdapter retrofitAdapter;
     private RecyclerView recyclerView;
-    private Toolbar toolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
-
-
+        //Ejecutamos el metodo CreateMenu de la clase OptionMenuActivity, para crear el menu principal
+        //Est tiene que hacerse para todas las clases que tengan el menu
+        CreateMenu();
         recyclerView = findViewById(R.id.recycler);
-        fetchJSON();
+        new fetchJSON().execute();
 
     }
 
-    private void fetchJSON(){
+    private class fetchJSON extends AsyncTask<Void, Void, Void>{
+        ProgressDialog progressDialog = new ProgressDialog(MenuActivity.this);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(RecyclerInterface.JSONURL)
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .build();
+        @Override
+        //Llamamos este metodo antes de la ejecucion
+        public void onPreExecute() {
+            super.onPreExecute();
+            //Muestro un Progress Dialog en background
 
-        RecyclerInterface api = retrofit.create(RecyclerInterface.class);
+            progressDialog.setMessage("Cargando...");
+            progressDialog.setCancelable(false);
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setIndeterminate(true);
+            progressDialog.show();
 
-        Call<String> call = api.getString("https://api.myjson.com/bins/cmvpx");
 
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
-                if (response.isSuccessful()) {
-                    if (response.body() != null) {
-                        Log.i("onSuccess", response.body().toString());
+        }
+        protected Void doInBackground(Void... arg0){
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(RecyclerInterface.JSONURL)
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .build();
 
-                        String jsonresponse = response.body().toString();
-                        writeRecycler(jsonresponse);
+            RecyclerInterface api = retrofit.create(RecyclerInterface.class);
 
-                    } else {
-                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+            Call<String> call = api.getString("https://api.myjson.com/bins/cmvpx");
+
+
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    Log.i("Responsestring", response.body().toString());
+                    //Toast.makeText()
+                    if (response.isSuccessful()) {
+                        if (response.body() != null) {
+                            Log.i("onSuccess", response.body().toString());
+
+                            String jsonresponse = response.body().toString();
+                            writeRecycler(jsonresponse);
+
+                        } else {
+                            Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+            return null;
+        }
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+
+        }
     }
 
     private void writeRecycler(String response){
