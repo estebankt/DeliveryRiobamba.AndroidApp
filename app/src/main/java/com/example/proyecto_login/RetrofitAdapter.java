@@ -58,6 +58,7 @@ public class RetrofitAdapter extends RecyclerView.Adapter<RetrofitAdapter.MyView
                 Intent intent = new Intent(mContext, RestaurantProducts.class);
                 intent.putExtra("image_url", dataModelArrayList.get(position).getImgURL());
                 intent.putExtra("image_name", dataModelArrayList.get(position).getName());
+                intent.putExtra("rest_id", dataModelArrayList.get(position).getId());
                 mContext.startActivity(intent);
             }
         });

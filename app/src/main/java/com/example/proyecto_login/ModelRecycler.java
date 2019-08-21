@@ -2,7 +2,7 @@ package com.example.proyecto_login;
 
 public class ModelRecycler {
 
-    private String name, type, billtype1, billtype2, imgURL;
+    private String name,id, type, billtype1, billtype2, imgURL;
 
     public String getImgURL(){
         return imgURL;
@@ -18,6 +18,14 @@ public class ModelRecycler {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getType() {

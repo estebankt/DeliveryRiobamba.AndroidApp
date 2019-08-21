@@ -115,6 +115,7 @@ public class MenuActivity extends OptionMenuActivity  {
                     modelRecycler.setType(dataobj.getString("type"));
                     modelRecycler.setBillType1(dataobj.getString("Bill_type_1"));
                     modelRecycler.setBillType2(dataobj.getString("Bill_type_2"));
+                    modelRecycler.setId(dataobj.getString("id"));
 
                     modelRecyclerArrayList.add(modelRecycler);
 
