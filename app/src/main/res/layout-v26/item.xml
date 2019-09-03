@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content" android:orientation="horizontal"
+    android:layout_width="fill_parent" android:id="@+id/LinearLayoutItem">
+
+    <TextView
+        android:id="@+id/TextViewItem"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dip"
+        android:maxWidth="150dip"
+        android:minLines="2"
+        android:text="Book Title"
+        android:textColor="#000000"
+        android:textSize="21dip"></TextView>
+     <TextView
+        android:id="@+id/price_item"
+        android:layout_width="77dp"
+        android:layout_height="match_parent"
+        android:layout_margin="5dip"
+        android:layout_weight="1"
+        android:textSize="21dip"></TextView>
+
+    <CheckBox
+        android:id="@+id/CheckBoxSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_gravity="center|top"
+        android:layout_marginLeft="5dip"
+        android:layout_marginTop="1dip"
+        android:layout_marginRight="5dip"
+        android:clickable="false"
+        android:focusable="false"></CheckBox>
+</LinearLayout>

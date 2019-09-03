@@ -1,5 +1,6 @@
 package com.example.proyecto_login;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -86,7 +87,7 @@ public class ListViewAdapter extends BaseAdapter{
             // Capture position and set results to the TextViews
             productname.setText(resultp.get("productname"));
             description.setText(resultp.get("description"));
-            productprice.setText(resultp.get("productprice"));
+            productprice.setText("$" + resultp.get("productprice"));
             Picasso.get().load(resultp.get("icon")).into(icon);
 
         }
@@ -97,8 +98,16 @@ public class ListViewAdapter extends BaseAdapter{
 
             @Override
             public void onClick(View arg0) {
+
                 // Get the position
                 resultp = data.get(position);
+                Intent viewShoppingCartIntent = new Intent(context, ProductDetailActivity.class);
+                viewShoppingCartIntent.putExtra("image_url", resultp.get("icon"));
+                viewShoppingCartIntent.putExtra("image_name", resultp.get("productname"));
+                viewShoppingCartIntent.putExtra("description", resultp.get("description"));
+                viewShoppingCartIntent.putExtra("price_product", resultp.get("productprice"));
+                viewShoppingCartIntent.putExtra("rest_id", resultp.get("rest_id"));
+                context.startActivity(viewShoppingCartIntent);
 
 
             }

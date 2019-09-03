@@ -3,6 +3,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,7 +30,9 @@ public class MenuActivity extends OptionMenuActivity  {
         setContentView(R.layout.activity_menu);
         //Ejecutamos el metodo CreateMenu de la clase OptionMenuActivity, para crear el menu principal
         //Est tiene que hacerse para todas las clases que tengan el menu
+        int i = 0;
         CreateMenu();
+
         recyclerView = findViewById(R.id.recycler);
         new fetchJSON().execute();
 

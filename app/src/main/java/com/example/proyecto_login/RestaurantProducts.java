@@ -70,7 +70,7 @@ public class RestaurantProducts extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
-            String url = "https://api.myjson.com/bins/rtumf";
+            String url = "https://api.myjson.com/bins/sxvin";
             String jsonStr = sh.makeServiceCall(url);
 
             Log.e(TAG, "Response from url: " + jsonStr);
@@ -100,6 +100,7 @@ public class RestaurantProducts extends AppCompatActivity {
                         restaurant.put("description", description);
                         restaurant.put("productprice", productprice);
                         restaurant.put("icon", icon);
+                        restaurant.put("rest_id", restaurantID);
 
                         // adding contact to contact list
                         RestaurantItems.add(restaurant);

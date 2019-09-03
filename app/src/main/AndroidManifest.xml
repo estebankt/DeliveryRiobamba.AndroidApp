@@ -7,13 +7,14 @@
 
     <application
         android:allowBackup="true"
+        android:background="@color/colorPrimaryDark"
         android:icon="@mipmap/ic_launcher"
         android:label="RiobambaDelivery"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:background="@color/colorPrimaryDark"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RestaurantProducts"></activity>
+        <activity android:name=".ProductDetailActivity"></activity>
+        <activity android:name=".RestaurantProducts" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -27,6 +28,11 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.proyecto_login.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ShoppingCartActivity"
+            android:parentActivityName=".MenuActivity"
+            android:theme="@style/AppTheme">
         </activity>
 
         <meta-data
@@ -49,13 +55,13 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-       <activity
+        <activity
             android:name=".LogInActivity"
             android:label="@string/title_activity_menu"
             android:parentActivityName=".LogInActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".MenuActivity"
+        <activity
+            android:name=".MenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
