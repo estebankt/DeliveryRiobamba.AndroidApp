@@ -1,4 +1,4 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.proyecto_login.R;
+import com.example.proyecto_login.UserInterface.ProductDetailActivity;
 import com.squareup.picasso.Picasso;
 
 

@@ -13,28 +13,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProductDetailActivity"></activity>
-        <activity android:name=".RestaurantProducts" />
+        <activity android:name=".UserInterface.ProductDetailActivity"></activity>
+
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".RegisterActivity"
+            android:name=".UserInterface.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:parentActivityName=".MenuActivity"
+            android:parentActivityName=".UserInterface.MenuActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.proyecto_login.MenuActivity" />
+                android:value="com.example.proyecto_login.UserInterface.MenuActivity" />
         </activity>
         <activity
-            android:name=".ShoppingCartActivity"
-            android:parentActivityName=".MenuActivity"
+            android:name=".UserInterface.ShoppingCartActivity"
+            android:parentActivityName=".UserInterface.MenuActivity"
             android:theme="@style/AppTheme">
         </activity>
-
+        <activity
+            android:name=".UserInterface.RestaurantListProductsActivity"
+            android:parentActivityName=".UserInterface.MenuActivity"
+            android:theme="@style/AppTheme">
+        </activity>
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -56,12 +60,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LogInActivity"
+            android:name=".UserInterface.LogInActivity"
             android:label="@string/title_activity_menu"
-            android:parentActivityName=".LogInActivity"
+            android:parentActivityName=".UserInterface.LogInActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".UserInterface.MenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

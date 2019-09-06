@@ -1,4 +1,4 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import com.example.proyecto_login.Model_Classes.Product;
+import com.example.proyecto_login.R;
 
 import java.util.List;
 

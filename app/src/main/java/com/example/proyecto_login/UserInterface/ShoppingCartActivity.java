@@ -1,4 +1,4 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.UserInterface;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.proyecto_login.Model_Classes.Product;
+import com.example.proyecto_login.Adapters.ProductAdapter;
+import com.example.proyecto_login.R;
+import com.example.proyecto_login.Adapters.ShoppingCartHelper;
 
 import java.util.List;
 

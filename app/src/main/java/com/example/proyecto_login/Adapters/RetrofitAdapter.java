@@ -1,24 +1,23 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.Adapters;
 
 import android.content.Context;
-//import android.support.v7.widget.RecyclerView;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyecto_login.Model_Classes.ModelRecycler;
+import com.example.proyecto_login.R;
+import com.example.proyecto_login.UserInterface.RestaurantListProductsActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
-import static android.content.ContentValues.TAG;
 
 
 public class RetrofitAdapter extends RecyclerView.Adapter<RetrofitAdapter.MyViewHolder> {
@@ -55,7 +54,7 @@ public class RetrofitAdapter extends RecyclerView.Adapter<RetrofitAdapter.MyView
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, RestaurantProducts.class);
+                Intent intent = new Intent(mContext, RestaurantListProductsActivity.class);
                 intent.putExtra("image_url", dataModelArrayList.get(position).getImgURL());
                 intent.putExtra("image_name", dataModelArrayList.get(position).getName());
                 intent.putExtra("rest_id", dataModelArrayList.get(position).getId());

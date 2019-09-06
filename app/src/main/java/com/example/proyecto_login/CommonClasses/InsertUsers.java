@@ -1,9 +1,9 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.CommonClasses;
 
 import android.util.Log;
-import android.widget.Toast;
 
-import org.json.JSONArray;
+import com.example.proyecto_login.UserInterface.RegisterActivity;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 

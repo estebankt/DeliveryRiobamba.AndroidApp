@@ -1,11 +1,8 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.ToolBarMenu;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,9 +10,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.proyecto_login.Model_Classes.Product;
+import com.example.proyecto_login.R;
+import com.example.proyecto_login.Adapters.ShoppingCartHelper;
+import com.example.proyecto_login.UserInterface.LogInActivity;
+import com.example.proyecto_login.UserInterface.MenuActivity;
+import com.example.proyecto_login.UserInterface.ShoppingCartActivity;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 

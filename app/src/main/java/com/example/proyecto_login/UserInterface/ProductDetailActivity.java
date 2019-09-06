@@ -1,8 +1,5 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.UserInterface;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,14 +9,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyecto_login.ToolBarMenu.OptionMenuActivity;
+import com.example.proyecto_login.Model_Classes.Product;
+import com.example.proyecto_login.R;
+import com.example.proyecto_login.Adapters.ShoppingCartHelper;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ProductDetailActivity extends OptionMenuActivity {
 
-    //private static final String TAG = "RestaurantProducts";
-    private String TAG = RestaurantProducts.class.getSimpleName();
+
+    private String TAG = RestaurantListProductsActivity.class.getSimpleName();
 
 
     @Override

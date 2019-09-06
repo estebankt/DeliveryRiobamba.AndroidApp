@@ -1,7 +1,10 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.CommonClasses;
 
 
 import android.util.Log;
+
+import com.example.proyecto_login.UserInterface.LogInActivity;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

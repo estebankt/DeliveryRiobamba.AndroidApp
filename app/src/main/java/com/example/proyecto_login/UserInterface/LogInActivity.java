@@ -1,4 +1,4 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.UserInterface;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,6 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.proyecto_login.CommonClasses.CheckUsers;
+import com.example.proyecto_login.CommonClasses.HttpHandler;
+import com.example.proyecto_login.ToolBarMenu.OptionMenuActivity;
+import com.example.proyecto_login.R;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;

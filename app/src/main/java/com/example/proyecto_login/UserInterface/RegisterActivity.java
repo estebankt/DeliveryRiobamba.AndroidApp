@@ -1,4 +1,4 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.UserInterface;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,6 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.proyecto_login.CommonClasses.CheckUsers;
+import com.example.proyecto_login.CommonClasses.HttpHandler;
+import com.example.proyecto_login.CommonClasses.InsertUsers;
+import com.example.proyecto_login.R;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 

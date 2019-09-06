@@ -1,4 +1,4 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.CommonClasses;
 
 import android.util.Log;
 import java.io.BufferedInputStream;

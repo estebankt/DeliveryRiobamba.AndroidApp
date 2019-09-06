@@ -1,4 +1,6 @@
-package com.example.proyecto_login;
+package com.example.proyecto_login.Adapters;
+
+import com.example.proyecto_login.Model_Classes.Product;
 
 import java.util.List;
 import java.util.Vector;
