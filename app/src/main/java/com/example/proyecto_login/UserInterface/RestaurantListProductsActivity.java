@@ -1,8 +1,7 @@
 package com.example.proyecto_login.UserInterface;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -10,9 +9,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-import com.example.proyecto_login.CommonClasses.HttpHandler;
 import com.example.proyecto_login.Adapters.ListViewAdapter;
 import com.example.proyecto_login.Interfaces.RecyclerInterface;
 import com.example.proyecto_login.R;
@@ -39,10 +39,16 @@ public class RestaurantListProductsActivity extends AppCompatActivity {
     ArrayList<HashMap<String, String>> RestaurantItems;
     String restaurantID;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_products);
+
+        Toolbar toolbar = findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Log.d(TAG, "onCreate: started.");
         getIncomingIntent();

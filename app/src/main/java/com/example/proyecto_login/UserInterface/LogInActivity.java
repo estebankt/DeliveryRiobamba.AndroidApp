@@ -2,9 +2,7 @@ package com.example.proyecto_login.UserInterface;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.proyecto_login.CommonClasses.CheckUsers;
-import com.example.proyecto_login.CommonClasses.HttpHandler;
+import com.example.proyecto_login.Interfaces.RecyclerInterface;
 import com.example.proyecto_login.ToolBarMenu.OptionMenuActivity;
 import com.example.proyecto_login.R;
 import com.facebook.AccessToken;
@@ -29,6 +27,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.Arrays;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LogInActivity extends OptionMenuActivity implements View.OnClickListener{
 
@@ -40,6 +41,7 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
     private LoginButton loginButton;
     private CircleImageView circleimageview;
     private TextView txtName,txtEmail;
+
 
 
     private CallbackManager callbackManager;
@@ -55,14 +57,13 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
         PASS = (EditText) findViewById(R.id.Password);
         loginButt = (Button) findViewById(R.id.loginbt);
         RegisterButt = (Button) findViewById(R.id.registerbt);
-
         loginButt.setOnClickListener(this);
         RegisterButt.setOnClickListener(this);
         //ejecutamos el metodo CreateMenu de la clase OptionMenuActivity, para crear el menu principal
         //Est tiene que hacerse para todas las clases que tengan el menu
         CreateMenu();
 
-
+        //-----------------------------------------------------------------------------------------
         //agregado por pato-------------------------------------------------------------------------
         loginButton = findViewById(R.id.login_button);
         //txtName = findViewById(R.id.profile_name);
@@ -92,7 +93,7 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
 
     }
 
-
+//-----------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
     //código agregado por Pato
     @Override
@@ -162,7 +163,8 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.loginbt:
-                new Login().execute();
+                fetchJSON();
+                //new Login().execute();
                 break;
             case R.id.registerbt:
                 //En caso de que presionemos el boton de registrar nos va a enviar a otra Activity
@@ -172,50 +174,47 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
         }
     }
 
+
+    private void fetchJSON(){
+
+        final ProgressDialog progressDialog = new ProgressDialog(LogInActivity.this);
+        progressDialog.setMessage("Autenticando...");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setIndeterminate(true);
+        progressDialog.show();
+        RecyclerInterface api = RecyclerInterface.retrofit.create(RecyclerInterface.class);
+        Call<String> call = api.getString("https://api.myjson.com/bins/w53kx");
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+               progressDialog.dismiss();
+               String jsonresponse = response.body().toString();
+               Login(jsonresponse);
+
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                //progressDoalog.dismiss();
+                Toast.makeText(LogInActivity.this, "Algo salio mal, intentelo mas tarde", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
     // Creamos la clase Login y heredamos de la clase AsyncTask para realizar operaciones en background
-    private class Login  extends AsyncTask<Void, Void, Void> {
+    public void Login (String JSON_STRING) {
         //transformamos los EditText en string para poder comparar
         String userN = UN.getText().toString();
         String Passw = PASS.getText().toString();
         String checker;
-        ProgressDialog progressDialog = new ProgressDialog(LogInActivity.this);
+        // Llamamos al metodo check de la clase CheckUser para revisar si el usuario existe
+        CheckUsers ch = new CheckUsers();
+       // El metodo check me devuelve un string con los posibles resultados:accept(Login Valido),no_accepted(Login invalido)
+      // invalid_pass(password invalido), error (Error por JSON)
+        checker = ch.check(JSON_STRING,userN,Passw);
 
-
-        @Override
-        //Llamamos este metodo antes de la ejecucion
-        protected void onPreExecute() {
-            super.onPreExecute();
-            //Muestro un Progress Dialog en background
-
-            progressDialog.setMessage("Autenticando...");
-            progressDialog.setCancelable(false);
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIndeterminate(true);
-            progressDialog.show();
-
-
-        }
-        //Llamamos este metodo para que se ejecute en background
-        @Override
-        protected Void doInBackground(Void... arg0) {
-
-
-            HttpHandler sh = new HttpHandler();
-            // Hacemos el request al URL
-            String url = "https://api.myjson.com/bins/w53kx";
-            String JSON_STRING = sh.makeServiceCall(url);
-            Log.e(TAG, "Response from url: " + JSON_STRING);
-            // Llamamos al metodo check de la clase CheckUser para revisar si el usuario existe
-            CheckUsers ch = new CheckUsers();
-            // El metodo check me devuelve un string con los posibles resultados:accept(Login Valido),no_accepted(Login invalido)
-            // invalid_pass(password invalido), error (Error por JSON)
-            checker = ch.check(JSON_STRING,userN,Passw);
-            return null;
-        }
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-            progressDialog.dismiss();
             if(checker.equals("accept")){
                 //En caso de que el loggin sea sucesss,llamamos al Activity "MenuActivity"
                 Intent menuactivity = new Intent(LogInActivity.this, MenuActivity.class);
@@ -230,8 +229,10 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
             else {
                 Toast.makeText(LogInActivity.this,checker,Toast.LENGTH_SHORT).show();
             }
+
         }
-    }
+
+
 
 
 

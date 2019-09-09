@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dip"
-            android:text="Dead or Alive"
+            android:text="Product Name"
             android:textColor="#000000"
             android:textSize="26dip"></TextView>
 
@@ -89,9 +89,7 @@
                 android:id="@+id/add_product"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
-
                 android:layout_alignParentBottom="false"
-
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -141,10 +139,6 @@
             android:layout_alignBottom="@+id/LinearLayoutHeader1"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="83dp"
-            android:layout_marginLeft="83dp"
-            android:layout_marginEnd="94dp"
-            android:layout_marginRight="94dp"
             android:layout_marginBottom="-109dp"
             android:text="Agregar a tu pedido"></Button>
 

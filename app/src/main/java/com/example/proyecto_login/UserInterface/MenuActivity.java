@@ -33,26 +33,24 @@ public class MenuActivity extends OptionMenuActivity {
         //Ejecutamos el metodo CreateMenu de la clase OptionMenuActivity, para crear el menu principal
         //Est tiene que hacerse para todas las clases que tengan el menu
         CreateMenu();
-        progressDoalog = new ProgressDialog(MenuActivity.this);
-        progressDoalog.setMessage("Cargando....");
-        progressDoalog.show();
         recyclerView = findViewById(R.id.recycler);
         fetchJSON();
-
     }
 
     private void fetchJSON(){
 
-
+        progressDoalog = new ProgressDialog(MenuActivity.this);
+        progressDoalog.setMessage("Cargando....");
+        progressDoalog.show();
         RecyclerInterface api = RecyclerInterface.retrofit.create(RecyclerInterface.class);
         Call<String> call = api.getString("https://api.myjson.com/bins/1h4xs5");
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
-                        progressDoalog.dismiss();
-                        String jsonresponse = response.body().toString();
-                        insertmenuitems(jsonresponse);
+                progressDoalog.dismiss();
+                String jsonresponse = response.body().toString();
+                insertmenuitems(jsonresponse);
             }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
@@ -65,7 +63,7 @@ public class MenuActivity extends OptionMenuActivity {
     }
 
 
-     private void insertmenuitems(String response){
+     public void insertmenuitems(String response){
 
         try {
             //getting the whole json object from the response

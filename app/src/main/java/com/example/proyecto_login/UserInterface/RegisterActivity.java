@@ -2,21 +2,23 @@ package com.example.proyecto_login.UserInterface;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.proyecto_login.CommonClasses.CheckUsers;
-import com.example.proyecto_login.CommonClasses.HttpHandler;
 import com.example.proyecto_login.CommonClasses.InsertUsers;
+import com.example.proyecto_login.Interfaces.RecyclerInterface;
 import com.example.proyecto_login.R;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -26,7 +28,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText DeliveryAddET;
     private EditText InvoiceAddET;
     private EditText PhoneET;
-    private String TAG = LogInActivity.class.getSimpleName();
     private Button RegisterButt;
 
 
@@ -49,12 +50,42 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.ConfRgbt:
-                new Register().execute();
+                fetchJSON();
                 break;
         }
     }
 
-    private class Register  extends AsyncTask<Void, Void, Void> {
+    private void fetchJSON(){
+
+        final ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
+        progressDialog.setMessage("Autenticando...");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setIndeterminate(true);
+        progressDialog.show();
+        RecyclerInterface api = RecyclerInterface.retrofit.create(RecyclerInterface.class);
+        Call<String> call = api.getString("https://api.myjson.com/bins/w53kx");
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                progressDialog.dismiss();
+                String jsonresponse = response.body().toString();
+                Register(jsonresponse);
+
+
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(RegisterActivity.this, "Algo salio mal, intentelo mas tarde", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+
+    public void Register (String JSON_STRING) {
         //transformamos los EditText en string para poder comparar
         String Name = NameET.getText().toString();
         String Password = PasswordET.getText().toString();
@@ -63,40 +94,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String InvvAddr = InvoiceAddET.getText().toString();
         String Phone = PhoneET.getText().toString();
         String resu;
-        ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
         String checker;
-        // Hacemos el request al URL
 
 
-        @Override
-        //Llamamos este metodo antes de la ejecucion
-        protected void onPreExecute() {
-            super.onPreExecute();
-            //Muestro un Progress Dialog en background
-            progressDialog.setMessage("Verificando...");
-            progressDialog.setCancelable(false);
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIndeterminate(true);
-            progressDialog.show();
-
-        }
-        //Llamamos este metodo para que se ejecute en background
-        @Override
-        protected Void doInBackground(Void... arg0) {
-
-
-            HttpHandler sh = new HttpHandler();
-            // Hacemos el request al URL
             String url = "https://api.myjson.com/bins/w53kx";
-            String JSON_STRING = sh.makeServiceCall(url);
-            Log.e(TAG, "Response from url: " + JSON_STRING);
             // Llamamos al metodo check de la clase CheckUser para revisar si el usuario existe
             CheckUsers ch = new CheckUsers();
             // El metodo check me devuelve un string con los posibles resultados:accept(Login Valido),no_accepted(Login invalido)
             // invalid_pass(password invalido), error (Error por JSON)
-            //chumeo eres un puto
             checker = ch.check(JSON_STRING,Mail,Password);
-
 
             if (checker.equals("accept") || checker.equals("invalid_pass")){
                 resu="AlreadyExist";
@@ -104,14 +110,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 //Llamamos al metodo que va a insertar un usuario por JSON
                 InsertUsers in = new InsertUsers();
                 resu = in.InsertUsr(url,Name, Password, Mail, DelivAddr, InvvAddr, Phone);
-
             }
-            return null;
-        }
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-            progressDialog.dismiss();
             if(resu.equals("AlreadyExist")){
                 //En caso de que el loggin sea sucesss,llamamos al Activity "MenuActivity"
                 Toast.makeText(RegisterActivity.this,"El Usuario ya existe. Seleccione otro Usuario",Toast.LENGTH_SHORT).show();
@@ -121,6 +120,5 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 Intent menuactivity = new Intent(RegisterActivity.this, MenuActivity.class);
                 startActivity(menuactivity);
             }
-        }
     }
 }

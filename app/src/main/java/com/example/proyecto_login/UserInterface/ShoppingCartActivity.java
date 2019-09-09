@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.proyecto_login.Model_Classes.Product;
 import com.example.proyecto_login.Adapters.ProductAdapter;
 import com.example.proyecto_login.R;
@@ -17,7 +20,7 @@ import com.example.proyecto_login.Adapters.ShoppingCartHelper;
 
 import java.util.List;
 
-public class ShoppingCartActivity extends Activity {
+public class ShoppingCartActivity extends AppCompatActivity {
 
     private List<Product> mCartList;
     private ProductAdapter mProductAdapter;
@@ -26,6 +29,11 @@ public class ShoppingCartActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shoppingcart);
+        Toolbar toolbar = findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         mCartList = ShoppingCartHelper.getCart();
         final double[] total = {0};
