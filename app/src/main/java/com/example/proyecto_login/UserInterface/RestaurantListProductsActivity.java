@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.proyecto_login.Adapters.ListViewAdapter;
 import com.example.proyecto_login.Interfaces.RecyclerInterface;
 import com.example.proyecto_login.R;
+import com.example.proyecto_login.ToolBarMenu.OptionMenuActivity;
 import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +30,7 @@ import retrofit2.Response;
 
 
 
-public class RestaurantListProductsActivity extends AppCompatActivity {
+public class RestaurantListProductsActivity extends OptionMenuActivity {
 
     ProgressDialog progressDoalog;
     private String TAG = RestaurantListProductsActivity.class.getSimpleName();
@@ -45,10 +46,7 @@ public class RestaurantListProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_products);
 
-        Toolbar toolbar = findViewById(R.id.toolbar2);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        CreateMenu(2);
 
         Log.d(TAG, "onCreate: started.");
         getIncomingIntent();

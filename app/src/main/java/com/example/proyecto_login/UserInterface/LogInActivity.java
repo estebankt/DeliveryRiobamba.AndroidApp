@@ -61,7 +61,7 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
         RegisterButt.setOnClickListener(this);
         //ejecutamos el metodo CreateMenu de la clase OptionMenuActivity, para crear el menu principal
         //Est tiene que hacerse para todas las clases que tengan el menu
-        CreateMenu();
+        CreateMenu(1);
 
         //-----------------------------------------------------------------------------------------
         //agregado por pato-------------------------------------------------------------------------

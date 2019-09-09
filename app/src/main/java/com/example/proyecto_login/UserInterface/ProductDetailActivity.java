@@ -31,7 +31,7 @@ public class ProductDetailActivity extends OptionMenuActivity {
         Log.d(TAG, "onCreate: started.");
 
 
-        CreateMenu();
+        CreateMenu(1);
 
         final int[] cont = {0};
         cont[0] = 1;
@@ -112,7 +112,7 @@ public class ProductDetailActivity extends OptionMenuActivity {
                 cont[0]=1;
                 TextView NumberofProducts = (TextView) findViewById(R.id.NumberOfProd);
                 NumberofProducts.setText("" + cont[0]);
-                CreateMenu();
+                CreateMenu(1);
 
             }
         });

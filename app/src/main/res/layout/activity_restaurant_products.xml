@@ -14,7 +14,7 @@
         android:weightSum="100">
 
         <include
-            layout="@layout/app_bar_main2"
+            layout="@layout/app_bar_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />

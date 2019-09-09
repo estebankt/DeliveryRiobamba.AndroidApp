@@ -17,10 +17,11 @@ import com.example.proyecto_login.Model_Classes.Product;
 import com.example.proyecto_login.Adapters.ProductAdapter;
 import com.example.proyecto_login.R;
 import com.example.proyecto_login.Adapters.ShoppingCartHelper;
+import com.example.proyecto_login.ToolBarMenu.OptionMenuActivity;
 
 import java.util.List;
 
-public class ShoppingCartActivity extends AppCompatActivity {
+public class ShoppingCartActivity extends OptionMenuActivity {
 
     private List<Product> mCartList;
     private ProductAdapter mProductAdapter;
@@ -29,10 +30,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shoppingcart);
-        Toolbar toolbar = findViewById(R.id.toolbar2);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        CreateMenu(2);
+
 
 
         mCartList = ShoppingCartHelper.getCart();
@@ -81,6 +80,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
                         //TextView totashow = findViewById(R.id.total_value);
                         totashow.setText(String.format("   %.2f", total[0]));
                         mCartList.remove(i);
+                        CreateMenu(2);
 
                     }
                 }

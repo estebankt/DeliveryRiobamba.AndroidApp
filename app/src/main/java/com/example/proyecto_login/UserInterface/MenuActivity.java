@@ -32,7 +32,7 @@ public class MenuActivity extends OptionMenuActivity {
         setContentView(R.layout.activity_menu);
         //Ejecutamos el metodo CreateMenu de la clase OptionMenuActivity, para crear el menu principal
         //Est tiene que hacerse para todas las clases que tengan el menu
-        CreateMenu();
+        CreateMenu(1);
         recyclerView = findViewById(R.id.recycler);
         fetchJSON();
     }
