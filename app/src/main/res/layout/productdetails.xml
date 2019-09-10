@@ -48,7 +48,7 @@
 
         <TextView
             android:id="@+id/TextViewProductDetails"
-            android:layout_width="22dp"
+            android:layout_width="24dp"
             android:layout_height="72dp"
             android:layout_marginLeft="10dip"
             android:layout_marginTop="5dip"
@@ -96,7 +96,7 @@
                 android:layout_marginBottom="15dp"
                 android:background="#00000000"
                 android:padding="10dp"
-                android:src="@drawable/ic_plus" />
+                android:src="@drawable/ic_add_circle" />
 
             <TextView
                 android:id="@+id/NumberOfProd"
@@ -125,7 +125,7 @@
                 android:layout_marginBottom="15dp"
                 android:background="#00000000"
                 android:padding="10dp"
-                android:src="@drawable/ic_min" />
+                android:src="@drawable/ic_remove_circle" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 

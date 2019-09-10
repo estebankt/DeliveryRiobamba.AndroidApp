@@ -24,7 +24,7 @@
     <ListView
         android:id="@+id/ListViewCatalog"
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
+        android:layout_height="286dp"
         android:layout_weight="1"
         android:background="#ffffff"
         android:cacheColorHint="#ffffff"
@@ -33,31 +33,54 @@
 
     </ListView>
 
-    <LinearLayout android:id="@+id/LinearLayout02"
-        android:layout_width="wrap_content" android:layout_height="300dp"
-        android:orientation="horizontal" android:layout_gravity="left"
-        android:layout_margin="5dip">
-        <TextView android:id="@+id/Total" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:textColor="#000000"
-            android:textSize="24dip" android:layout_margin="5dip" android:text="Total:"></TextView>
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
+        android:layout_width="wrap_content"
+        android:layout_height="105dp"
+        android:layout_gravity="left"
+        android:layout_margin="5dip"
+        android:orientation="horizontal">
 
-        <TextView android:id="@+id/total_value" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:textColor="#000000"
-            android:textSize="24dip" android:layout_margin="5dip"
-            ></TextView>
+        <TextView
+            android:id="@+id/Total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dip"
+            android:text="Total:"
+            android:textColor="#000000"
+            android:textSize="24dip"></TextView>
+
+        <TextView
+            android:id="@+id/total_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:textColor="#000000"
+            android:textSize="24dip"></TextView>
     </LinearLayout>
 
 
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:layout_margin="1dip"
+        android:orientation="vertical">
 
-    <LinearLayout android:id="@+id/LinearLayout01"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:orientation="horizontal" android:layout_gravity="center"
-        android:layout_margin="5dip">
-        <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/ButtonRemoveFromCart"
-            android:text="Remover del Carro"></Button>
-        <Button android:id="@+id/Button02" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="Realizar Pedido"></Button>
+        <Button
+            android:id="@+id/ButtonRemoveFromCart"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:text="Remover Items seleccionados"></Button>
+
+        <Button
+            android:id="@+id/Button02"
+            android:layout_width="fill_parent"
+            android:layout_margin="10dip"
+            android:layout_height="wrap_content"
+            android:text="Realizar Pedido"></Button>
     </LinearLayout>
 
 

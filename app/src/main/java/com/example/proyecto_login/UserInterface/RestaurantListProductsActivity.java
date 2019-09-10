@@ -1,9 +1,11 @@
 package com.example.proyecto_login.UserInterface;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,6 +41,8 @@ public class RestaurantListProductsActivity extends OptionMenuActivity {
     ListViewAdapter adapter;
     ArrayList<HashMap<String, String>> RestaurantItems;
     String restaurantID;
+    String imageUrl;
+    String imageName;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -48,7 +52,7 @@ public class RestaurantListProductsActivity extends OptionMenuActivity {
 
         CreateMenu(2);
 
-        Log.d(TAG, "onCreate: started.");
+         Log.d(TAG, "onCreate: started.");
         getIncomingIntent();
         RestaurantItems = new ArrayList<>();
         progressDoalog = new ProgressDialog(RestaurantListProductsActivity.this);
@@ -64,8 +68,8 @@ public class RestaurantListProductsActivity extends OptionMenuActivity {
         if(getIntent().hasExtra("image_url") && getIntent().hasExtra("image_name")){
             Log.d(TAG, "getIncomingIntent: found intent extras.");
 
-            String imageUrl = getIntent().getStringExtra("image_url");
-            String imageName = getIntent().getStringExtra("image_name");
+            imageUrl = getIntent().getStringExtra("image_url");
+            imageName = getIntent().getStringExtra("image_name");
             restaurantID= getIntent().getStringExtra("rest_id");
 
             setImage(imageUrl, imageName);

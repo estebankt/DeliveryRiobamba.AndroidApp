@@ -3,6 +3,7 @@ package com.example.proyecto_login.ToolBarMenu;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.example.proyecto_login.R;
 import com.example.proyecto_login.Adapters.ShoppingCartHelper;
 import com.example.proyecto_login.UserInterface.LogInActivity;
 import com.example.proyecto_login.UserInterface.MenuActivity;
+import com.example.proyecto_login.UserInterface.RestaurantListProductsActivity;
 import com.example.proyecto_login.UserInterface.ShoppingCartActivity;
 import com.google.android.material.navigation.NavigationView;
 
@@ -33,7 +35,7 @@ public class OptionMenuActivity extends AppCompatActivity  implements Navigation
 
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
-
+            /// si menunumber es igual a 1, agrgamos el submenu desplegable
             if (menunumber==1) {
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
                 NavigationView navigationView = findViewById(R.id.nav_view);
@@ -43,12 +45,36 @@ public class OptionMenuActivity extends AppCompatActivity  implements Navigation
                 drawer.addDrawerListener(toggle);
                 toggle.syncState();
                 navigationView.setNavigationItemSelectedListener(this);
-
+                /// si menunumber es igual a 2, agrgamos el boton atras
             }else if (menunumber==2){
 
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 getSupportActionBar().setDisplayShowHomeEnabled(true);
+             }
+
+    }
+    // Aca creamos un metodo que genera un toolbar con un boton para hacer atras. Este toolbar se va a aplicar exclusivamente para
+    // el activity ProductDetailactivity, ya que si agregamos productos debemos tener la opcion de seguir comprando otras cosas del
+    //mismo restaurant
+    public void CreateMenu2(final String imageUrl, final String imageName, final String  restaurantID) {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RestaurantListProductsActivity.class);
+                intent.putExtra("image_url", imageUrl);
+                intent.putExtra("image_name", imageName);
+                intent.putExtra("rest_id", restaurantID);
+                getApplicationContext().startActivity(intent);
+
             }
+
+
+        });
+
 
     }
     @Override

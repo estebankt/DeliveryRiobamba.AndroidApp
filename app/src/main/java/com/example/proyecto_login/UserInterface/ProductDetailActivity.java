@@ -1,5 +1,6 @@
 package com.example.proyecto_login.UserInterface;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.proyecto_login.ToolBarMenu.OptionMenuActivity;
 import com.example.proyecto_login.Model_Classes.Product;
@@ -31,17 +34,19 @@ public class ProductDetailActivity extends OptionMenuActivity {
         Log.d(TAG, "onCreate: started.");
 
 
-        CreateMenu(1);
+
+
 
         final int[] cont = {0};
         cont[0] = 1;
         //extract the extra fields of the previus actiity
-        String imageUrl = getIntent().getStringExtra("image_url");
+        final String imageUrl = getIntent().getStringExtra("image_url");
         final String imageName = getIntent().getStringExtra("image_name");
         final String ProductPrice = getIntent().getStringExtra("price_product");
         final String description = getIntent().getStringExtra("description");
         final String restaurantID = getIntent().getStringExtra("rest_id");
-
+        //Llamamos al metodo createMenu2 que crea el toolbar con el menu
+        CreateMenu2(imageUrl,imageName,restaurantID);
         //We set the values and show on the new activity
         TextView NumberofProducts = (TextView) findViewById(R.id.NumberOfProd);
         NumberofProducts.setText("" + cont[0]);
@@ -68,6 +73,10 @@ public class ProductDetailActivity extends OptionMenuActivity {
         ImageButton removeToCartButton = (ImageButton) findViewById(R.id.remove_product);
         Button addToCartButton = (Button) findViewById(R.id.ButtonAddToCart);
         i[0] = cart.size();
+
+
+
+
 
         addToCartButton1.setOnClickListener(new View.OnClickListener() {
 
@@ -112,7 +121,8 @@ public class ProductDetailActivity extends OptionMenuActivity {
                 cont[0]=1;
                 TextView NumberofProducts = (TextView) findViewById(R.id.NumberOfProd);
                 NumberofProducts.setText("" + cont[0]);
-                CreateMenu(1);
+                //Actualizamos el carrito llamano a createMenu2
+                CreateMenu2(imageUrl,imageName,restaurantID);
 
             }
         });
