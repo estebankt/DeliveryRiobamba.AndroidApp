@@ -68,7 +68,7 @@ public class OptionMenuActivity extends AppCompatActivity  implements Navigation
                 intent.putExtra("image_url", imageUrl);
                 intent.putExtra("image_name", imageName);
                 intent.putExtra("rest_id", restaurantID);
-                getApplicationContext().startActivity(intent);
+                startActivity(intent);
 
             }
 
