@@ -36,6 +36,11 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity
+            android:name=".UserInterface.CategoriesActivity"
+
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
             android:name=".UserInterface.ShoppingCartActivity"
             android:parentActivityName=".UserInterface.MenuActivity"
             android:theme="@style/AppTheme">

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout android:layout_height="100dp"
+        android:layout_width="100dp">
+        <ImageButton
+            android:id="@+id/button_x"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@null"
+            android:scaleType="fitXY"
+            >
+        </ImageButton>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/text_x"
+            android:clickable="false"
+            android:text="TEST TEST" >
+        </TextView>
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

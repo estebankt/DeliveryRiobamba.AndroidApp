@@ -5,11 +5,13 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.proyecto_login.Model_Classes.ModelRecycler;
+
+import com.example.proyecto_login.Adapters.RecyclerAdapterMenu;
+import com.example.proyecto_login.Model_Classes.ModelMenu;
 import com.example.proyecto_login.ToolBarMenu.OptionMenuActivity;
 import com.example.proyecto_login.R;
 import com.example.proyecto_login.Interfaces.RecyclerInterface;
-import com.example.proyecto_login.Adapters.RetrofitAdapter;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,7 +23,7 @@ import retrofit2.Response;
 
 public class MenuActivity extends OptionMenuActivity {
 
-    private RetrofitAdapter retrofitAdapter;
+    private RecyclerAdapterMenu retrofitAdapter;
     private RecyclerView recyclerView;
     ProgressDialog progressDoalog;
 
@@ -68,25 +70,25 @@ public class MenuActivity extends OptionMenuActivity {
         try {
             //getting the whole json object from the response
                 JSONObject obj = new JSONObject(response);
-                ArrayList<ModelRecycler> modelRecyclerArrayList = new ArrayList<>();
+                ArrayList<ModelMenu> modelRecyclerArrayList = new ArrayList<>();
                 JSONArray dataArray  = obj.getJSONArray("Restaurants");
 
                 for (int i = 0; i < dataArray.length(); i++) {
 
-                    ModelRecycler modelRecycler = new ModelRecycler();
+                    ModelMenu modelmenu = new ModelMenu();
                     JSONObject dataobj = dataArray.getJSONObject(i);
-                    modelRecycler.setImgURL(dataobj.getString("imgURL"));
-                    modelRecycler.setName(dataobj.getString("name"));
-                    modelRecycler.setType(dataobj.getString("type"));
-                    modelRecycler.setBillType1(dataobj.getString("Bill_type_1"));
-                    modelRecycler.setBillType2(dataobj.getString("Bill_type_2"));
-                    modelRecycler.setId(dataobj.getString("id"));
+                    modelmenu.setImgURL(dataobj.getString("imgURL"));
+                    modelmenu.setName(dataobj.getString("name"));
+                    modelmenu.setType(dataobj.getString("type"));
+                    modelmenu.setBillType1(dataobj.getString("Bill_type_1"));
+                    modelmenu.setBillType2(dataobj.getString("Bill_type_2"));
+                    modelmenu.setId(dataobj.getString("id"));
 
-                    modelRecyclerArrayList.add(modelRecycler);
+                    modelRecyclerArrayList.add(modelmenu);
 
                 }
 
-                retrofitAdapter = new RetrofitAdapter(this,modelRecyclerArrayList);
+                retrofitAdapter = new RecyclerAdapterMenu(this,modelRecyclerArrayList);
                 recyclerView.setAdapter(retrofitAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
 

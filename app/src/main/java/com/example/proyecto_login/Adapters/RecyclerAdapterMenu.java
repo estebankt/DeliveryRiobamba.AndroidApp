@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.proyecto_login.Model_Classes.ModelRecycler;
+import com.example.proyecto_login.Model_Classes.ModelMenu;
 import com.example.proyecto_login.R;
 import com.example.proyecto_login.UserInterface.RestaurantListProductsActivity;
 import com.squareup.picasso.Picasso;
@@ -20,13 +19,13 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 
-public class RetrofitAdapter extends RecyclerView.Adapter<RetrofitAdapter.MyViewHolder> {
+public class RecyclerAdapterMenu extends RecyclerView.Adapter<RecyclerAdapterMenu.MyViewHolder> {
 
     private LayoutInflater inflater;
-    private ArrayList<ModelRecycler> dataModelArrayList;
+    private ArrayList<ModelMenu> dataModelArrayList;
     private Context mContext;
 
-    public RetrofitAdapter(Context ctx, ArrayList<ModelRecycler> dataModelArrayList){
+    public RecyclerAdapterMenu(Context ctx, ArrayList<ModelMenu> dataModelArrayList){
 
         inflater = LayoutInflater.from(ctx);
         this.dataModelArrayList = dataModelArrayList;
@@ -34,7 +33,7 @@ public class RetrofitAdapter extends RecyclerView.Adapter<RetrofitAdapter.MyView
     }
 
     @Override
-    public RetrofitAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerAdapterMenu.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = inflater.inflate(R.layout.retro_item, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
@@ -43,7 +42,7 @@ public class RetrofitAdapter extends RecyclerView.Adapter<RetrofitAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(RetrofitAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(RecyclerAdapterMenu.MyViewHolder holder, final int position) {
 
         Picasso.get().load(dataModelArrayList.get(position).getImgURL()).into(holder.iv);
         holder.name.setText(dataModelArrayList.get(position).getName());

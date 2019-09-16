@@ -14,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.proyecto_login.Model_Classes.Product;
 import com.example.proyecto_login.R;
 import com.example.proyecto_login.Adapters.ShoppingCartHelper;
+import com.example.proyecto_login.UserInterface.CategoriesActivity;
 import com.example.proyecto_login.UserInterface.LogInActivity;
 import com.example.proyecto_login.UserInterface.MenuActivity;
 import com.example.proyecto_login.UserInterface.RestaurantListProductsActivity;
@@ -133,7 +134,8 @@ public class OptionMenuActivity extends AppCompatActivity  implements Navigation
             startActivity(intent);
 
         } else if (id == R.id.nav_categories) {
-
+            Intent intent = new Intent(this, CategoriesActivity.class);
+            startActivity(intent);
         } else if (id == R.id.close_session) {
 
         } else if (id == R.id.nav_share) {

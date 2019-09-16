@@ -1,6 +1,6 @@
 package com.example.proyecto_login.Model_Classes;
 
-public class ModelRecycler {
+public class ModelMenu {
 
     private String name,id, type, billtype1, billtype2, imgURL;
 
