@@ -21,7 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.proyecto_login.Model_Classes.ModelCategories;
 import com.example.proyecto_login.R;
 import com.example.proyecto_login.UserInterface.LogInActivity;
+import com.example.proyecto_login.UserInterface.MenuActivity;
 import com.example.proyecto_login.UserInterface.RestaurantListProductsActivity;
+import com.example.proyecto_login.UserInterface.RestaurantsFilteredActivity;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -60,7 +62,9 @@ public class RecyclerAdapterCategories extends RecyclerView.Adapter<RecyclerAdap
         holder.categoryItemBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(mContext, RestaurantsFilteredActivity.class);
+                intent.putExtra("type", productsList.get(position).getName());
+                mContext.startActivity(intent);
             }
         });
 
