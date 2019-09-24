@@ -2,6 +2,7 @@ package com.example.proyecto_login.UserInterface;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,8 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.proyecto_login.Adapters.ProfileHelper;
 import com.example.proyecto_login.CommonClasses.CheckUsers;
 import com.example.proyecto_login.Interfaces.RecyclerInterface;
+import com.example.proyecto_login.Model_Classes.ModelUser;
 import com.example.proyecto_login.ToolBarMenu.OptionMenuActivity;
 import com.example.proyecto_login.R;
 import com.facebook.AccessToken;
@@ -26,6 +29,8 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.Arrays;
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,6 +46,8 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
     private LoginButton loginButton;
     private CircleImageView circleimageview;
     private TextView txtName,txtEmail;
+    SharedPreferences sp;
+    private List<ModelUser> mProfile;
 
 
 
@@ -62,6 +69,16 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
         //ejecutamos el metodo CreateMenu de la clase OptionMenuActivity, para crear el menu principal
         //Est tiene que hacerse para todas las clases que tengan el menu
         CreateMenu(1);
+
+        sp = getSharedPreferences("log",MODE_PRIVATE);
+
+
+        if(sp.getInt("logged",0)==3){
+
+            Intent i = new Intent(this,ProfileActivity.class);
+            startActivity(i);
+
+        }
 
         //-----------------------------------------------------------------------------------------
         //agregado por pato-------------------------------------------------------------------------
@@ -217,6 +234,17 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
 
             if(checker.equals("accept")){
                 //En caso de que el loggin sea sucesss,llamamos al Activity "MenuActivity"
+                sp.edit().putInt("logged",3).apply();
+                mProfile = ProfileHelper.getProfile();
+                for (int i = 0; i < mProfile.size(); i++) {
+
+                    sp.edit().putString("name", mProfile.get(i).uname).apply();
+                    sp.edit().putString("password", mProfile.get(i).upassword).apply();
+                    sp.edit().putString("email", mProfile.get(i).email).apply();
+                    sp.edit().putString("deladdress", mProfile.get(i).deladdress).apply();
+                    sp.edit().putString("inadress", mProfile.get(i).inadress).apply();
+                    sp.edit().putString("phone", mProfile.get(i).phone).apply();
+                }
                 Intent menuactivity = new Intent(LogInActivity.this, MenuActivity.class);
                 startActivity(menuactivity);
             }else if(checker.equals("no_accepted")) {

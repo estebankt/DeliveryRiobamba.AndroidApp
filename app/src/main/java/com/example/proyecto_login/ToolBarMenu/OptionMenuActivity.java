@@ -1,6 +1,7 @@
 package com.example.proyecto_login.ToolBarMenu;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -137,6 +138,11 @@ public class OptionMenuActivity extends AppCompatActivity  implements Navigation
             Intent intent = new Intent(this, CategoriesActivity.class);
             startActivity(intent);
         } else if (id == R.id.close_session) {
+            SharedPreferences sp;
+            sp = getSharedPreferences("log",MODE_PRIVATE);
+            sp.edit().putInt("logged",0).apply();
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {
 

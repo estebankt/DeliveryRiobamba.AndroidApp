@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UserInterface.ProfileActivity"></activity>
         <activity android:name=".UserInterface.StartActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,22 +37,22 @@
         </activity>
         <activity
             android:name=".UserInterface.ProductDetailActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".UserInterface.CategoriesActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".UserInterface.RestaurantsFilteredActivity"
             android:parentActivityName=".UserInterface.CategoriesActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".UserInterface.ShoppingCartActivity"
             android:parentActivityName=".UserInterface.MenuActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".UserInterface.RestaurantListProductsActivity"
             android:parentActivityName=".UserInterface.MenuActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -79,12 +79,9 @@
             android:label="@string/title_activity_menu"
             android:parentActivityName=".UserInterface.LogInActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".UserInterface.MenuActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
