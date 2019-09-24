@@ -73,7 +73,7 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
         sp = getSharedPreferences("log",MODE_PRIVATE);
 
 
-        if(sp.getInt("logged",0)==3){
+        if(sp.getInt("logged",0)==1){
 
             Intent i = new Intent(this,ProfileActivity.class);
             startActivity(i);
@@ -234,7 +234,7 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
 
             if(checker.equals("accept")){
                 //En caso de que el loggin sea sucesss,llamamos al Activity "MenuActivity"
-                sp.edit().putInt("logged",3).apply();
+                sp.edit().putInt("logged",1).apply();
                 mProfile = ProfileHelper.getProfile();
                 for (int i = 0; i < mProfile.size(); i++) {
 
