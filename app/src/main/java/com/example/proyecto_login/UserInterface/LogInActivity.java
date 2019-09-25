@@ -57,6 +57,16 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        sp = getSharedPreferences("log",MODE_PRIVATE);
+
+
+        if(sp.getInt("logged",0)==1){
+
+            Intent i = new Intent(this,ProfileActivity.class);
+            startActivity(i);
+        }
+
         setContentView(R.layout.activity_login);
         //Importamos los EditText creados en el xml activity_main
         //Buscamos los editText y los botones por el ID y les metemos dentro de variables ya generadas
@@ -70,15 +80,7 @@ public class LogInActivity extends OptionMenuActivity implements View.OnClickLis
         //Est tiene que hacerse para todas las clases que tengan el menu
         CreateMenu(1);
 
-        sp = getSharedPreferences("log",MODE_PRIVATE);
 
-
-        if(sp.getInt("logged",0)==1){
-
-            Intent i = new Intent(this,ProfileActivity.class);
-            startActivity(i);
-
-        }
 
         //-----------------------------------------------------------------------------------------
         //agregado por pato-------------------------------------------------------------------------

@@ -141,7 +141,7 @@ public class OptionMenuActivity extends AppCompatActivity  implements Navigation
             SharedPreferences sp;
             sp = getSharedPreferences("log",MODE_PRIVATE);
             sp.edit().putInt("logged",0).apply();
-            Intent intent = new Intent(this, MenuActivity.class);
+            Intent intent = new Intent(this, LogInActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_share) {

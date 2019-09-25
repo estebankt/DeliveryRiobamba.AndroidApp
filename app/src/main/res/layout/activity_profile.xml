@@ -1,124 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserInterface.ProfileActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <ScrollView
-        android:layout_width="455dp"
-        android:layout_height="620dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="5000dp"
-            android:orientation="vertical">
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
-            <EditText
-                android:id="@+id/Name"
-                android:layout_width="261dp"
-                android:layout_height="47dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="70dp"
-                android:autofillHints=""
-                android:editable="@android:bool/config_sendPackageName"
-                android:hint="@string/nombre_y_apellido"
-                android:inputType=""
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <include
+        layout="@layout/content_profile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
-            <EditText
-                android:id="@+id/Mail"
-                android:layout_width="261dp"
-                android:layout_height="47dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="52dp"
-                android:layout_marginTop="50dp"
-                android:autofillHints=""
-                android:hint="@string/correo_electronico"
-                android:editable="@android:bool/config_sendPackageName"
-                android:inputType=""
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Adress" />
-
-            <EditText
-                android:id="@+id/Password"
-                android:layout_width="261dp"
-                android:layout_height="47dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="52dp"
-                android:layout_marginTop="50dp"
-                android:autofillHints=""
-                android:hint="@string/contrase_a"
-                android:editable="@android:bool/config_sendPackageName"
-                android:inputType="textPassword"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Mail" />
-
-            <EditText
-                android:id="@+id/DelieryAdd"
-                android:layout_width="261dp"
-                android:layout_height="47dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="52dp"
-                android:layout_marginTop="50dp"
-                android:editable="@android:bool/config_sendPackageName"
-                android:autofillHints=""
-                android:hint="@string/direccion_de_entrega"
-                android:inputType=""
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Phone" />
-
-            <EditText
-                android:id="@+id/InvoiceAddr"
-                android:layout_width="261dp"
-                android:layout_height="47dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="52dp"
-                android:layout_marginTop="50dp"
-                android:autofillHints=""
-                android:editable="@android:bool/config_sendPackageName"
-                android:hint="@string/direccion_de_la_factura"
-                android:inputType=""
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/DelieryAdd" />
-
-            <EditText
-                android:id="@+id/Phone"
-                android:layout_width="261dp"
-                android:layout_height="47dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="52dp"
-                android:layout_marginTop="50dp"
-                android:editable="@android:bool/config_sendPackageName"
-                android:autofillHints=""
-                android:hint="@string/telefono"
-                android:inputType=""
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Password" />
-
-            <Button
-                android:id="@+id/ConfRgbt"
-                android:layout_width="261dp"
-                android:layout_height="47dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="132dp"
-                android:layout_marginTop="80dp"
-                android:text="Edit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/InvoiceAddr" />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_menu" >
 
 
-        </LinearLayout>
-    </ScrollView>
+    </com.google.android.material.navigation.NavigationView>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
